@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>PumpWatch Ireland</title>
+<meta name="description" content="Today's petrol and diesel prices at stations around Ireland, posted by drivers and station owners.">
+<meta name="theme-color" content="#0b6b45">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230b6b45'/%3E%3Cpath d='M6 19V7a1.5 1.5 0 0 1 1.5-1.5h5A1.5 1.5 0 0 1 14 7v12M5 19h10M7.5 9.5h5M14 10h1.5a1.5 1.5 0 0 1 1.5 1.5v4a1 1 0 0 0 2 0V10l-2-2' fill='none' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@600;800&family=Public+Sans:wght@400;500;600&family=Share+Tech+Mono&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="band">
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16"/><path d="M3 21h13"/><path d="M6 8h7"/><path d="M15 9h2a2 2 0 0 1 2 2v6a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg>
+    </div>
+    <div>
+      <h1>PumpWatch</h1>
+      <p>Fuel prices around Ireland, posted by drivers and station owners</p>
+    </div>
+  </div>
+  <div class="fuels" id="fuels" role="group" aria-label="Fuel shown on the map"></div>
+</header>
+
+<div class="notice" id="demoNotice" hidden>
+  <strong>Demo mode.</strong> Prices you post are saved only in this browser. Connect a Supabase database (see README) so everyone shares the same prices.
+</div>
+
+<div class="layout">
+  <div class="map-wrap">
+    <div id="map" aria-label="Map of fuel stations"></div>
+    <div class="map-status" id="mapStatus" role="status">Loading stations…</div>
+    <div class="place-hint" id="placeHint" hidden>Tap the map where the station is.</div>
+  </div>
+
+  <aside class="panel" id="panel">
+    <div id="view"></div>
+    <section class="card">
+      <div class="eyebrow">Latest updates</div>
+      <ul class="feed" id="feed"></ul>
+    </section>
+    <p class="foot">Station locations © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>. Prices are posted by the public and may not be current. Check the pump before you fill up.</p>
+  </aside>
+</div>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
